@@ -4,7 +4,7 @@ hero:
   desc: 记录前端技术文章，系列小册，工程与架构相关的探索等
   actions:
     - text: 开始阅读
-      link: /data-structure
+      link: /javascript
 
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png

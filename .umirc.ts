@@ -7,9 +7,13 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   navs: [
+    // {
+    //   title: '首页',
+    //   path: '/index',
+    // },
     {
-      title: '最新文章',
-      path: '/articles',
+      title: 'JavaScript',
+      path: '/javascript',
     },
     {
       title: '数据结构',
