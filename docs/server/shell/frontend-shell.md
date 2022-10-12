@@ -1,3 +1,11 @@
+---
+group:
+  title: Shell
+  path: /shell
+  order: 3
+order: 1
+---
+
 # 前端为什么要学 shell?
 
 Shell 是 操作 Linux 系统的桥梁。

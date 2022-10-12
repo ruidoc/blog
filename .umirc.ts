@@ -19,6 +19,10 @@ export default defineConfig({
       title: '数据结构',
       path: '/data-structure',
     },
+    {
+      title: '服务端',
+      path: '/server',
+    },
   ],
   // more config: https://d.umijs.org/config
 });

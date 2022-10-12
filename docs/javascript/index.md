@@ -1,9 +1,10 @@
 ---
-title: JavaScript 基础
+title: JavaScript 专题
 order: 1
+footer: timegnnjnjk
 ---
 
-# jsvascript 核心
+# JavaScript 专题
 
 JavaScript 是前端的核心，是一门应用非常广泛，且在快速发展中的编程语言。早期的 JavaScript 虽然简单好用，但在一些细节上的设计可能难以理解，这是历史原因造成的。ES6 出现之后，JavaScript 语法来了一次大版本的升级，现代前端框架迅速将其应用，这使 JavaScript 焕然一新。
 

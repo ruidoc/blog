@@ -1,3 +1,11 @@
+---
+group:
+  title: Node.js
+  path: /node
+  order: 1
+order: 2
+---
+
 # 初识 node
 
 Node.js 是一个开源与跨平台的 JavaScript 运行时环境。

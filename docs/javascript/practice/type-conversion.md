@@ -1,12 +1,16 @@
 ---
+group:
+  title: 实践
+  path: /practice
 title: 数据类型转换
+order: 1
 ---
 
 # 数据类型转换
 
 JS 中的数据类型有两种转换方式：`显示转换`和`隐式转换`。
 
-主要是 `number`，`string`，`boolean` 这三种类型的转换
+主要是 `number`，`string`，`boolean` 这三种类型的转换。
 
 ### 显式转换
 

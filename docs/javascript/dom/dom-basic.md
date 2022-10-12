@@ -1,3 +1,11 @@
+---
+group:
+  title: DOM
+  path: /dom
+  order: 5
+order: 1
+---
+
 # 基础知识
 
 文档对象模型 (DOM) 是 HTML 和 XML 文档的编程接口
@@ -28,7 +36,7 @@ DOM 结构以树的形态存在，树中的最小单位是节点
 
 指被各个标签包起来的文字，比如：
 
-```jsx
+```js
 <span>哈哈哈</span>
 ```
 

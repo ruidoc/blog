@@ -2,7 +2,7 @@
 group:
   title: 异步
   path: /async
-  order: 3
+  order: 4
 order: 1
 ---
 

@@ -1,3 +1,11 @@
+---
+group:
+  title: ES6+
+  path: /es6+
+  order: 3
+order: 1
+---
+
 # 常用操作
 
 收集 ES6 剩余知识。

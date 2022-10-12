@@ -16,5 +16,5 @@ features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
     title: 工程与架构
     desc: 技术的本质是降本增效，工程与架构通过自动化，规范化来“化繁为简”
-footer: Open-source MIT Licensed | Copyright © 2022<br />Powered by [杨成功](https://d.umijs.org)
+footer: Open-source MIT Licensed | Copyright © 2022<br />Powered by [杨成功](https://github.com/ruidoc)
 ---

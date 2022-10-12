@@ -3,7 +3,6 @@ group:
   title: 核心
   path: /core
   order: 2
-title: 01 数据类型
 order: 1
 ---
 
