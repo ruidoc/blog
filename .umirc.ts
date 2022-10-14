@@ -23,6 +23,10 @@ export default defineConfig({
       title: '服务端',
       path: '/server',
     },
+    {
+      title: 'GitHub',
+      path: 'https://github.com/ruidoc/blog',
+    },
   ],
   // more config: https://d.umijs.org/config
 });
