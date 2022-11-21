@@ -7,10 +7,6 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   navs: [
-    // {
-    //   title: '首页',
-    //   path: '/index',
-    // },
     {
       title: 'JavaScript',
       path: '/javascript',
@@ -22,6 +18,15 @@ export default defineConfig({
     {
       title: '服务端',
       path: '/server',
+    },
+    {
+      title: '更多',
+      children: [
+        {
+          title: '跨平台',
+          path: '/crosspt',
+        },
+      ],
     },
     {
       title: 'GitHub',

@@ -1,4 +1,12 @@
-# electron
+---
+group:
+  title: Electron
+  path: /electron
+  order: 1
+order: 3
+---
+
+# 认识 Electron
 
 Electron 是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架。框架内部嵌入了 Chromium 和 Node.js。Chromium 负责界面的渲染，所以应用窗口像一个 Chrome 浏览器；Node.js 主要关注逻辑部分，负责系统底层能力的调用。
 
