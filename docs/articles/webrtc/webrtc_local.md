@@ -52,13 +52,13 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
 以 Chrome 浏览器为例，摄像头和屏幕的视频流获取方式不一样。对于摄像头和麦克风，使用如下 API 获取：
 
 ```js
-var stream = await navigator.mediaDevices.getUserMedia()
+var stream = await navigator.mediaDevices.getUserMedia();
 ```
 
 对于屏幕录制，则会用另外一个 API。限制是这个 API 只能获取视频，不能获取音频：
 
 ```js
-var stream = await navigator.mediaDevices.getDisplayMedia()
+var stream = await navigator.mediaDevices.getDisplayMedia();
 ```
 
 > 注意：这里我遇到过一个问题，编辑器里提示 navigator.mediaDevices == undefined，原因是我的 typescript 版本小于 4.4，升级版本即可。
@@ -77,8 +77,8 @@ var stream = await navigator.mediaDevices.getDisplayMedia()
 ```js
 let stream = await navigator.mediaDevices.getDisplayMedia({
   audio: false,
-  video: true
-})
+  video: true,
+});
 ```
 
 除了简单的配置获取视频之外，还可以对视频的清晰度，码率等涉及视频质量相关的参数做配置。比如我需要获取 1080p 的超清视频，我就可以这样配：
@@ -88,9 +88,9 @@ var stream = await navigator.mediaDevices.getDisplayMedia({
   audio: false,
   video: {
     width: 1920,
-    height: 1080
-  }
-})
+    height: 1080,
+  },
+});
 ```
 
 当然了，这里配置视频的分辨率 1080p，并不代表实际获取的视频一定是 1080p。比如我的摄像头是 720p 的，那即便我配置了 2k 的分辨率，实际获取的最多也是 720p，这个和硬件与网络有关系。
@@ -99,28 +99,28 @@ var stream = await navigator.mediaDevices.getDisplayMedia({
 
 ```js
 // 视频轨道
-let videoTracks = stream.getVideoTracks()
+let videoTracks = stream.getVideoTracks();
 // 音频轨道
-let audioTracks = stream.getAudioTracks()
+let audioTracks = stream.getAudioTracks();
 // 全部轨道
-stream.getTracks()
+stream.getTracks();
 ```
 
 单独获取轨道有什么意义呢？比如上面的获取屏幕的 API `getDisplayMedia` 无法获取音频，但是我们直播的时候既需要屏幕也需要声音，此时就可以分别获取音频和视频，然后组成一个新的媒体流。实现如下：
 
 ```javascript
 const getNewStream = async () => {
-  var stream = new MediaStream()
+  var stream = new MediaStream();
   let audio_stm = await navigator.mediaDevices.getUserMedia({
-    audio: true
-  })
+    audio: true,
+  });
   let video_stm = await navigator.mediaDevices.getDisplayMedia({
-    video: true
-  })
-  audio_stm.getAudioTracks().map(row => stream.addTrack(row))
-  video_stm.getVideoTracks().map(row => stream.addTrack(row))
-  return stream
-}
+    video: true,
+  });
+  audio_stm.getAudioTracks().map((row) => stream.addTrack(row));
+  video_stm.getVideoTracks().map((row) => stream.addTrack(row));
+  return stream;
+};
 ```
 
 ## 对等连接流程
@@ -138,8 +138,8 @@ const getNewStream = async () => {
 首先创建两个连接实例，这两个实例就是互相通信的双方。
 
 ```js
-var peerA = new RTCPeerConnection()
-var peerB = new RTCPeerConnection()
+var peerA = new RTCPeerConnection();
+var peerB = new RTCPeerConnection();
 ```
 
 > 下文统一将发起直播的一端称为 `发起端`，接收观看直播的一端称为 `接收端`
@@ -147,10 +147,10 @@ var peerB = new RTCPeerConnection()
 现在的这两个连接实例都还没有数据。假设 peerA 是发起端，peerB 是接收端，那么 peerA 的那端就要像上一步一样获取到媒体流数据，然后添加到 peerA 实例，实现如下：
 
 ```javascript
-var stream = await navigator.mediaDevices.getUserMedia()
-stream.getTracks().forEach(track => {
-  peerA.addTrack(track, stream)
-})
+var stream = await navigator.mediaDevices.getUserMedia();
+stream.getTracks().forEach((track) => {
+  peerA.addTrack(track, stream);
+});
 ```
 
 当 peerA 添加了媒体数据，那么 peerB 必然会在后续连接的某个环节接收到媒体数据。因此还要为 peerB 设置监听函数，获取媒体数据：
@@ -175,15 +175,15 @@ peerB.ontrack = async event => {
 现在我们为两端创建 SDP。peerA 创建 offer，peerB 创建 answer：
 
 ```js
-var offer = await peerA.createOffer()
-var answer = await peerB.createAnswer()
+var offer = await peerA.createOffer();
+var answer = await peerB.createAnswer();
 ```
 
 创建之后，首先接收端 peerB 要将 offset 设置为远程描述，然后将 answer 设置为本地描述：
 
 ```javascript
-await peerB.setRemoteDescription(offer)
-await peerB.setLocalDescription(answer)
+await peerB.setRemoteDescription(offer);
+await peerB.setLocalDescription(answer);
 ```
 
 > 注意：当 peerB.setRemoteDescription 执行之后，peerB.ontrack 事件就会触发。当然前提是第一步为 peerA 添加了媒体数据。
@@ -193,8 +193,8 @@ await peerB.setLocalDescription(answer)
 同样的逻辑，peerB 设置完成后，peerA 也要将 answer 设为远程描述，offer 设置为本地描述。
 
 ```javascript
-await peerA.setRemoteDescription(answer)
-await peerA.setLocalDescription(offer)
+await peerA.setRemoteDescription(answer);
+await peerA.setLocalDescription(offer);
 ```
 
 到这里，互相交换 SDP 已完成。但是通信还未结束，还差最后一步。
@@ -202,11 +202,11 @@ await peerA.setLocalDescription(offer)
 当 peerA 执行 **setLocalDescription** 函数时会触发 `onicecandidate` 事件，我们需要定义这个事件，然后在里面为 peerB 添加 **candidate**：
 
 ```javascript
-peerA.onicecandidate = event => {
+peerA.onicecandidate = (event) => {
   if (event.candidate) {
-    peerB.addIceCandidate(event.candidate)
+    peerB.addIceCandidate(event.candidate);
   }
-}
+};
 ```
 
 至此，端对端通信才算是真正建立了！如果过程顺利的话，此时 peerB 的 ontrack 事件内应该已经接收到媒体流数据了，你只需要将媒体数据渲染到一个 video 标签上即可实现播放。
@@ -216,14 +216,14 @@ peerA.onicecandidate = event => {
 最后我们再为 peerA 添加状态监听事件，检测连接是否成功：
 
 ```javascript
-peerA.onconnectionstatechange = event => {
+peerA.onconnectionstatechange = (event) => {
   if (peerA.connectionState === 'connected') {
-    console.log('对等连接成功！')
+    console.log('对等连接成功！');
   }
   if (peerA.connectionState === 'disconnected') {
-    console.log('连接已断开！')
+    console.log('连接已断开！');
   }
-}
+};
 ```
 
 ## 本地模拟通信源码
@@ -243,10 +243,10 @@ peerA.onconnectionstatechange = event => {
 然后设置全局变量：
 
 ```javascript
-var peerA = null
-var peerB = null
-var videoElA = document.getElementById('elA')
-var videoElB = document.getElementById('elB')
+var peerA = null;
+var peerB = null;
+var videoElA = document.getElementById('elA');
+var videoElB = document.getElementById('elB');
 ```
 
 按钮绑定了一个 `onStart` 方法，在这个方法内获取媒体数据：
@@ -256,49 +256,49 @@ const onStart = async () => {
   try {
     var stream = await navigator.mediaDevices.getUserMedia({
       audio: true,
-      video: true
-    })
+      video: true,
+    });
     if (videoElA.current) {
-      videoElA.current.srcObject = stream // 在 video 标签上播放媒体流
+      videoElA.current.srcObject = stream; // 在 video 标签上播放媒体流
     }
-    peerInit(stream) // 初始化连接
+    peerInit(stream); // 初始化连接
   } catch (error) {
-    console.log('error：', error)
+    console.log('error：', error);
   }
-}
+};
 ```
 
 onStart 函数里调用了 `peerInit` 方法，在这个方法内初始化连接：
 
 ```javascript
-const peerInit = stream => {
+const peerInit = (stream) => {
   // 1. 创建连接实例
-  var peerA = new RTCPeerConnection()
-  var peerB = new RTCPeerConnection()
+  var peerA = new RTCPeerConnection();
+  var peerB = new RTCPeerConnection();
   // 2. 添加视频流轨道
-  stream.getTracks().forEach(track => {
-    peerA.addTrack(track, stream)
-  })
+  stream.getTracks().forEach((track) => {
+    peerA.addTrack(track, stream);
+  });
   // 添加 candidate
-  peerA.onicecandidate = event => {
+  peerA.onicecandidate = (event) => {
     if (event.candidate) {
-      peerB.addIceCandidate(event.candidate)
+      peerB.addIceCandidate(event.candidate);
     }
-  }
+  };
   // 检测连接状态
-  peerA.onconnectionstatechange = event => {
+  peerA.onconnectionstatechange = (event) => {
     if (peerA.connectionState === 'connected') {
-      console.log('对等连接成功！')
+      console.log('对等连接成功！');
     }
-  }
+  };
   // 监听数据传来
-  peerB.ontrack = async event => {
-    const [remoteStream] = event.streams
-    videoElB.current.srcObject = remoteStream
-  }
+  peerB.ontrack = async (event) => {
+    const [remoteStream] = event.streams;
+    videoElB.current.srcObject = remoteStream;
+  };
   // 互换sdp认证
-  transSDP()
-}
+  transSDP();
+};
 ```
 
 初始化连接之后，在 `transSDP` 方法中互换 SDP 建立连接：
@@ -306,15 +306,15 @@ const peerInit = stream => {
 ```javascript
 const transSDP = async () => {
   // 1. 创建 offer
-  let offer = await peerA.createOffer()
-  await peerB.setRemoteDescription(offer)
+  let offer = await peerA.createOffer();
+  await peerB.setRemoteDescription(offer);
   // 2. 创建 answer
-  let answer = await peerB.createAnswer()
-  await peerB.setLocalDescription(answer)
+  let answer = await peerB.createAnswer();
+  await peerB.setLocalDescription(answer);
   // 3. 发送端设置 SDP
-  await peerA.setLocalDescription(offer)
-  await peerA.setRemoteDescription(answer)
-}
+  await peerA.setLocalDescription(offer);
+  await peerA.setRemoteDescription(answer);
+};
 ```
 
 > 注意：这个方法里的代码顺序非常重要，如果改了顺序多半会连接失败！
@@ -339,9 +339,9 @@ Demo 完整代码我已经上传 GitHub，需要查阅请看 [这里](https://gi
 
 ```javascript
 // peerA 端
-let offer = await peerA.createOffer()
-await peerA.setLocalDescription(offer)
-await peerA.setRemoteDescription(answer)
+let offer = await peerA.createOffer();
+await peerA.setLocalDescription(offer);
+await peerA.setRemoteDescription(answer);
 ```
 
 这里设置远程描述用到了 answer，那么 `answer` 从何而来？
@@ -361,18 +361,18 @@ await peerA.setRemoteDescription(answer)
 ```javascript
 // peerA 端
 const transSDP = async () => {
-  let offer = await peerA.createOffer()
+  let offer = await peerA.createOffer();
   // 向 peerB 传输 offer
-  socketA.send({ type: 'offer', data: offer })
+  socketA.send({ type: 'offer', data: offer });
   // 接收 peerB 传来的 answer
-  socketA.onmessage = async evt => {
-    let { type, data } = evt.data
+  socketA.onmessage = async (evt) => {
+    let { type, data } = evt.data;
     if (type == 'answer') {
-      await peerA.setLocalDescription(offer)
-      await peerA.setRemoteDescription(data)
+      await peerA.setLocalDescription(offer);
+      await peerA.setRemoteDescription(data);
     }
-  }
-}
+  };
+};
 ```
 
 这个逻辑是发起端 peerA 创建 offer 之后，立即传给 peerB 端。当 peerB 端执行完自己的代码并创建 answer 之后，再回传给 peerA 端，此时 peerA 再设置自己的描述。
@@ -381,30 +381,30 @@ const transSDP = async () => {
 
 ```javascript
 // peerA 端
-peerA.onicecandidate = event => {
+peerA.onicecandidate = (event) => {
   if (event.candidate) {
-    socketA.send({ type: 'candid', data: event.candidate })
+    socketA.send({ type: 'candid', data: event.candidate });
   }
-}
+};
 ```
 
 peerB 端稍有不同，必须是接收到 offer 并设置为远程描述之后，才可以创建 answer，创建之后再发给 peerA 端，同时也要接收 candidate 数据：
 
 ```javascript
 // peerB 端，接收 peerA 传来的 offer
-socketB.onmessage = async evt => {
-  let { type, data } = evt.data
+socketB.onmessage = async (evt) => {
+  let { type, data } = evt.data;
   if (type == 'offer') {
-    await peerB.setRemoteDescription(data)
-    let answer = await peerB.createAnswer()
-    await peerB.setLocalDescription(answer)
+    await peerB.setRemoteDescription(data);
+    let answer = await peerB.createAnswer();
+    await peerB.setLocalDescription(answer);
     // 向 peerA 传输 answer
-    socketB.send({ type: 'answer', data: answer })
+    socketB.send({ type: 'answer', data: answer });
   }
   if (type == 'candid') {
-    peerB.addIceCandidate(data)
+    peerB.addIceCandidate(data);
   }
-}
+};
 ```
 
 这样两端通过远程互传数据的方式，就实现了局域网内两个客户端的连接通信。
@@ -429,39 +429,39 @@ socketB.onmessage = async evt => {
 
 ```javascript
 // 发起端
-var offer = null
-var Peers = [] // 连接实例数组
+var offer = null;
+var Peers = []; // 连接实例数组
 
 // 接收端请求连接，传来标识id
-const newPeer = async id => {
+const newPeer = async (id) => {
   // 1. 创建连接
-  let peer = new RTCPeerConnection()
+  let peer = new RTCPeerConnection();
   // 2. 添加视频流轨道
-  stream.getTracks().forEach(track => {
-    peer.addTrack(track, stream)
-  })
+  stream.getTracks().forEach((track) => {
+    peer.addTrack(track, stream);
+  });
   // 3. 创建并传递 SDP
-  offer = await peerA.createOffer()
-  socketA.send({ type: 'offer', data: { id, offer } })
+  offer = await peerA.createOffer();
+  socketA.send({ type: 'offer', data: { id, offer } });
   // 5. 保存连接
-  Peers.push({ id, peer })
-}
+  Peers.push({ id, peer });
+};
 
 // 监听接收端的信息
-socketA.onmessage = async evt => {
-  let { type, data } = evt.data
+socketA.onmessage = async (evt) => {
+  let { type, data } = evt.data;
   // 接收端请求连接
   if (type == 'join') {
-    newPeer(data)
+    newPeer(data);
   }
   if (type == 'answer') {
-    let index = Peers.findIndex(row => row.id == data.id)
+    let index = Peers.findIndex((row) => row.id == data.id);
     if (index >= 0) {
-      await Peers[index].peer.setLocalDescription(offer)
-      await Peers[index].peer.setRemoteDescription(data.answer)
+      await Peers[index].peer.setLocalDescription(offer);
+      await Peers[index].peer.setRemoteDescription(data.answer);
     }
   }
-}
+};
 ```
 
 这个就是核心逻辑了，其实不难，思路理顺了就很简单。

@@ -33,5 +33,8 @@ export default defineConfig({
       path: 'https://github.com/ruidoc/blog',
     },
   ],
+  ssr: {
+    devServerRender: true,
+  },
   // more config: https://d.umijs.org/config
 });
