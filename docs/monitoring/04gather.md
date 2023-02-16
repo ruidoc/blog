@@ -224,7 +224,7 @@ const reportBehaviors = () => {
 
 通用数据针对所有页面自动收集，特定数据就需要根据每个页面的实际需求手动添加。以一个按钮为例：
 
-```jsx
+```js
 <button onClick={onClick}>点击</button>;
 const onClick = (e) => {
   // console.log(e);

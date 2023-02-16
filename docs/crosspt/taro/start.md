@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # 开始使用 Taro
 
 全局安装 `@tarojs/cli` 之后，可在终端使用 taro 命令。

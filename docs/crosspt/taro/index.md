@@ -3,7 +3,7 @@ group:
   title: Taro
   path: /taro
   order: 1
-order: 2
+order: 1
 ---
 
 # 认识 Taro

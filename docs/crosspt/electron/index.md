@@ -2,7 +2,7 @@
 group:
   title: Electron
   path: /electron
-  order: 1
+  order: 3
 order: 3
 ---
 

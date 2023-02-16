@@ -2,11 +2,11 @@
 group:
   title: React Native
   path: /react-native
-  order: 1
-order: 4
+  order: 2
+order: 2
 ---
 
-# React Native
+# 认识 React Native
 
 React Native 是使用 React 开发原生 App 的框架，是一个老牌的跨平台开发框架，目前最新版本 `0.7`。React Native 对前端开发人员友好，但是性能是其瓶颈。
 
