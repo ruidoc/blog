@@ -1,4 +1,4 @@
-# Node.js Buffer
+# 缓存 Buffer
 
 JavaScript 的 6 种基本数据类型中，没有二进制数据类型。
 

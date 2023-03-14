@@ -1,18 +1,18 @@
 ---
 group:
-  title: Node.js
-  path: /node
+  title: 基础
+  path: /basic
   order: 1
-order: 2
+order: 1
 ---
 
-# 初识 node
+# 认识 Node.js
 
 Node.js 是一个开源与跨平台的 JavaScript 运行时环境。
 
 Node 运行于 V8 引擎，单进程，单线程，通过异步非阻塞 IO，在并发处理上有极大的优势。
 
-在浏览器中对新的 ECMAScript 语法会有兼容问题，但是在 node 中完全无此顾虑，可以放心的使用新语法。
+在浏览器中对新的 ECMAScript 语法会有兼容问题，但是在 Node.js 中完全无此顾虑，可以放心的使用新语法。
 
 ### Node 与浏览器的区别
 

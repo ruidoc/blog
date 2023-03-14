@@ -3,6 +3,24 @@ import CompressionPlugin from 'compression-webpack-plugin';
 
 export default defineConfig({
   title: '杨成功的博客',
+  metas: [
+    {
+      name: 'keywords',
+      content: '杨成功,前端架构师,前端',
+    },
+    {
+      name: 'description',
+      content: '杨成功的个人博客，记录和分享前端工程、跨端开发、Node.js、服务端等知识',
+    },
+    {
+      name: 'anthor',
+      content: '杨成功',
+    },
+    {
+      name: 'robots',
+      content: '杨成功,前端架构师',
+    },
+  ],
   favicon: 'https://www.ruims.top/static/logo-round.png',
   logo: 'https://www.ruims.top/static/logo-round.png',
   outputPath: 'docs-dist',

@@ -2,7 +2,7 @@
 
 我们知道，Node.js 的最大亮点，就是**单线程的异步非阻塞 I/O**。而实现这个机制的，就是事件循环。
 
-在 js 核心部分，我记录过浏览器的事件循环，从[这里](../javascript/core/event-loop.md)回顾。
+在 js 核心部分，我记录过浏览器的事件循环，从[这里](/javascript/core/event-loop.md)回顾。
 
 Node.js 与浏览器的事件循环原理基本相似，但是运行机制不同。
 
@@ -10,7 +10,7 @@ Node.js 与浏览器的事件循环原理基本相似，但是运行机制不同
 
 首先附上一张简化的 Node.js 架构图：
 
-![086F092A05CD.png](./image/086F092A05CD.png)
+![086F092A05CD.png](../image/086F092A05CD.png)
 
 Node 整体上由这三部分组成：
 
@@ -26,7 +26,7 @@ Node 整体上由这三部分组成：
 
 ### libuv 中的 Event-Loop
 
-![B8F3D1254F34D8D77957.png](./image/B8F3D1254F34D8D77957.png)
+![B8F3D1254F34D8D77957.png](../image/B8F3D1254F34D8D77957.png)
 
 共六个阶段，有不同的任务：
 

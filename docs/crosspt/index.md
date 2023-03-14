@@ -2,7 +2,7 @@
 order: 1
 ---
 
-# 跨平台专题
+# 跨平台专题 <Badge>专题</Badge>
 
 前端在几年前仅代表着由 HTML、CSS、JavaScript 开发的浏览器网页。随着 JavaScript 语言变得越来越强大，前端能做的事情越来越多。特别是 Node.js 出现之后，JavaScript 有了访问系统的能力，这为前端跨平台开发提供了契机。
 
