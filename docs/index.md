@@ -20,3 +20,12 @@ features:
     desc: 技术的本质是降本增效，工程与架构通过自动化，规范化来“化繁为简”
 footer: Open-source MIT Licensed | Copyright © 2022<br />Powered by [杨成功](https://github.com/ruidoc)
 ---
+
+```jsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import blog from 'ruidoc-blog';
+export default () => blog;
+```
