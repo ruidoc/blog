@@ -21,7 +21,8 @@ $ mkdir conf storage plugins
 
 ```sh
 # V_PATH 是你的宿主环境目录
-V_PATH=/data/docker/verdaccio; docker run -it --name verdaccio \
+V_PATH=/data/docker/verdaccio;
+docker run -it --name verdaccio \
   -p 4873:4873 \
   -v $V_PATH/conf:/verdaccio/conf \
   -v $V_PATH/storage:/verdaccio/storage \

@@ -10,7 +10,7 @@
 
 ### 1. Record<Keys, Type>
 
-快速创建一个对象类型，其属性名为拆解后的 Keys（以 typeof 格式），属性值为 Type，所有属性必填。例子：
+快速创建一个对象类型，其属性名为拆解后的 Keys（以 typeof 格式），类型为 Type，所有属性必填。例子：
 
 ```ts
 type Log = Record<'x' | 'y', string>;

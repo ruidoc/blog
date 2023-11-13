@@ -49,6 +49,10 @@ export default defineConfig({
           title: '数据结构',
           path: '/data-structure',
         },
+        {
+          title: 'Android',
+          path: '/android',
+        },
       ],
     },
     {
