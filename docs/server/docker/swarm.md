@@ -1,3 +1,7 @@
+---
+order: 4
+---
+
 # 集群（swarm）
 
 Swarm 是 Docker 内置的集群管理和编排工具。

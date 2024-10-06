@@ -1,3 +1,11 @@
+---
+group:
+  title: MongoDB
+  path: /mongo
+  order: 3
+order: 1
+---
+
 # MongoDB 数据库
 
 MongoDB 是一款基于文档的分布式数据库，适用于现代应用程序，是云时代下数据库的潮流。

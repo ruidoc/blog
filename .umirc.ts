@@ -31,12 +31,12 @@ export default defineConfig({
       path: '/javascript',
     },
     {
-      title: '跨平台',
-      path: '/crosspt',
+      title: '数据结构',
+      path: '/data-structure',
     },
     {
-      title: 'Node.js',
-      path: '/nodejs',
+      title: '跨平台',
+      path: '/crosspt',
     },
     {
       title: '服务端',
@@ -46,8 +46,8 @@ export default defineConfig({
       title: '更多',
       children: [
         {
-          title: '数据结构',
-          path: '/data-structure',
+          title: 'Node.js',
+          path: '/nodejs',
         },
         {
           title: 'Android',

@@ -3,7 +3,7 @@ group:
   title: Electron
   path: /electron
   order: 3
-order: 3
+order: 1
 ---
 
 # 认识 Electron

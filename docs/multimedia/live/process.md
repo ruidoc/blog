@@ -16,7 +16,7 @@
 
 **图像采集**：由摄像机或其他设备拍摄成 `YUV` 编码的原始数据，然后`编码压缩`成 H.264 格式数据进行分发出去。
 
-常见的视频封装格式有：MP4、3GP、AVI、MKV、WMV、MPG、VOB、FLV、SWF、MOV、RMVB 和 WebM 等。
+常见的视频封装格式有：MP4、FLV、3GP、AVI、MKV、WMV、MPG、VOB、SWF、MOV、RMVB 和 WebM 等。
 
 ## 2. 处理
 
@@ -38,7 +38,7 @@
 - VP9
 - FFmpeg
 
-常见的音频编码器：Mp3, AAC 等。
+常见的音频编码器：Mp3, AAC, Opus 等。
 
 编码分为硬件编码（硬编）和软件编码（软编）。硬编靠 GPU，性能更好；软编靠 CPU，兼容性更好。
 

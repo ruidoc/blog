@@ -1,3 +1,7 @@
+---
+order: 5
+---
+
 # 私有仓库（registry）
 
 使用 Docker 拉取镜像时，默认会从 Docker Hub 这个公共仓库拉取。

@@ -51,9 +51,3 @@ BroadcastReceiver 的 2 种注册方式：
 文件、数据库等资源在 Android 系统内是私有的。如果要从系统中读取数据、或是在两个程序之间共享数据，都需要用 `ContentProvider` 来实现。
 
 ContentProvider 类实现了一组标准方法的接口，从而能够让其他的应用保存或读各种数据类型。
-
-## Intent
-
-Intent 并不是 Android 应用程序四大核心组件之一，但是其重要性无可替代。
-
-`Intent` 是对即将要进行的操作的抽象描述。三大核心组件 —— Activity、Service、BroadcastReceiver 传递的消息就是 Intent，它承担了三大核心组件相互之间的通信功能。

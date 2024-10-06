@@ -2,7 +2,7 @@
 group:
   title: Taro
   path: /taro
-  order: 1
+  order: 3
 order: 1
 ---
 

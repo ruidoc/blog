@@ -7,7 +7,7 @@
 1. 设置 $OVPN_DATA 变量，值为 openvpn 配置文件的绝对路径：
 
 ```sh
-$ OVPN_DATA="/data/docker/openvpn/ovpn-data-focusone"
+$ OVPN_DATA="/docker/openvpn/ovpn-data-focusone"
 $ echo $OVPN_DATA; # 测试
 ```
 

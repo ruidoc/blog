@@ -1,3 +1,7 @@
+---
+debug: true
+---
+
 # atlassian 安装
 
 atlassian 有两款产品 `confluence` 和 `jira-software`，是目前最流行的项目管理工具。

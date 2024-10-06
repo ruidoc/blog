@@ -26,7 +26,7 @@ order: 1
 
 但是链表就不一样了。链表虽然与数组功能一致，但是链表的元素在内存中独立放置，并不连续。每一个元素都由元素本身的值和下一个元素的引用组成，结构图如下：
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e75e64f3f6954680b47db669be736561~tplv-k3u1fbpfcp-watermark.image?)
+![linked_list.png](../images/linked_list.png)
 
 看过这个图就更清晰了。当你需要在任意一个位置添加元素时，你只需新增一个元素，修改当前元素和上一个元素的引用即可，其他元素没有任何变化。因此不管你的链表长度如何，操作元素的性能都非常高。
 

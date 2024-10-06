@@ -4,7 +4,7 @@ order: 2
 
 # 闭包面试真题
 
-主要是循环体系列和复杂作用域系列。
+主要是循环体系列和复杂作用域系列。闭包与内部函数是否返回无关。
 
 ## 循环体系利
 
@@ -79,4 +79,38 @@ for (var i = 0; i < 10; i++) {
   test();
 }
 console.log(test()); // 10
+```
+
+## 其他试题
+
+1. 考察 n++ 和变量提升
+
+```js
+var a = 0,
+  b = 0;
+var A = function (a) {
+  A = function (b) {
+    alert(a + b++);
+  };
+  alert(a++);
+};
+A(1);
+A(2);
+```
+
+结果：分别弹出 1 和 4。
+
+2. 考察块级作用域
+
+```js
+var name = 'xiuyan'; // 全局作用域内的变量
+// 函数作用域
+function showName() {
+  console.log(name);
+}
+// 块作用域
+{
+  name = 'BigBear';
+}
+showName(); // 输出 'BigBear'
 ```

@@ -26,7 +26,7 @@ order: 1
 
 上述的概念如果比较难理解，看一张图你就明白了：
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a143ca7ba48f43b4bded864aafe551ad~tplv-k3u1fbpfcp-watermark.image?)
+![hash_table.png](../images/hash_table.png)
 
 散列表还可以用来做数据库的索引。在关系型数据库如 MySQL 中，当你新建一张表并创建好了字段，你还可以为某些字段设置索引。设置索引是在散列表中存储了索引值和对应记录的引用，以便快速的找到数据。
 

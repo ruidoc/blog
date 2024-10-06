@@ -1,4 +1,8 @@
-# Docker Compose
+---
+order: 3
+---
+
+# 多容器（Compose）
 
 Docker Compose 是 Docker 官方编排工具，负责实现对多个 Docker 容器快速编排。
 

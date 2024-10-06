@@ -2,7 +2,7 @@
 group:
   title: Shell
   path: /shell
-  order: 3
+  order: 1
 order: 1
 ---
 

@@ -17,7 +17,7 @@ order: 2
 ```js
 class Stack {
   constructor() {
-    this.count = 0;
+    this.count = 0; // 代表数量
     this.items = {};
   }
 }
