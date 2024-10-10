@@ -8,8 +8,6 @@ order: 2
 
 上一篇我们介绍了树的概念，什么是二叉树与二叉搜索树，并实现了一个二叉搜索树的类，然后完成了节点插入的功能。
 
-如果你还不清楚树是什么，请看上一篇：[怒肝 JavaScript 数据结构 — 树与二叉树](https://juejin.cn/post/7090562723045441543)
-
 这一篇我们继续介绍二叉搜索树，主要探讨如何遍历一棵树。树的遍历有多种方式，我们要了解其不同之处，再对上篇添加的节点进行查找。
 
 ## 树的遍历
@@ -64,7 +62,7 @@ console.log(bin_tree);
 
 打印结果如下：
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc86ff0976e54c22b2047b10ae37365d~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/tree_for1.png)
 
 这样这棵树就创建好了，下面我们遍历这棵树：
 
@@ -76,7 +74,7 @@ bin_tree.inOrderTraverse((key) => {
 
 遍历结果如下：
 
-![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/41de509aace84f64ba0744f69472420c~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/tree_for2.png)
 
 看结果确实是从小到大排列，符合中序遍历的要求。
 
@@ -116,7 +114,7 @@ bin_tree.preOrderTraverse((key) => {
 
 执行结果如下：
 
-![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c24bc5978c5a4bf789613bdf6a060740~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/tree_for3.png)
 
 从结果也能看出来，先序遍历是先访问节点本身，然后是左侧节点，最后是右侧节点，因此是 `中-左-右` 的执行顺序。
 
@@ -149,7 +147,7 @@ bin_tree.postOrderTraverse((key) => {
 
 打印结果如下：
 
-![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/084f0c41bb3d4eafbea903df6244145c~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/tree_for4.png)
 
 实现完这三个遍历方法，我们再看它们名称的含义。先序遍历，中序遍历，后序遍历，这里的“先，中，后” 其实指的都是 `根节点` 的位置，两边的规则都是先左后右。
 
@@ -178,5 +176,3 @@ bin_tree.postOrderTraverse((key) => {
 本篇我们介绍了如何遍历二叉搜索树，以及三种不同遍历方式的区别，现在我们可以找到树中的任意一个值了。
 
 有了本篇的知识做铺垫，下篇我们就能介绍在二叉搜索树中高效查找值。
-
-本文来源公众号：**程序员成功**。这是学习 JavaScript 数据结构与算法的第 22 篇，本系列会连续更新一个月，欢迎关注公众号，点击“**加群**”一起加入我们的学习队伍～

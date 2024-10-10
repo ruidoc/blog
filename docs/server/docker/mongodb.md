@@ -17,6 +17,7 @@ $ docker pull mongo:6
 ```sh
 /docker/mongodb/data/    #数据库数据目录
 /docker/mongodb/dump/    #备份数据目录
+/docker/mongodb/logs/    #日志目录
 ```
 
 然后作为一个容器运行：
@@ -27,6 +28,10 @@ $ docker run --name mongodb \
     -p 27017:27017 \
     -v /docker/mongodb/data:/data/db \
     -v /docker/mongodb/dump:/var/dump \
+    -v /docker/mongodb/logs:/var/log/mongodb \
+    --log-driver=json-file \
+    --log-opt max-size=10m \
+    --log-opt max-file=5 \
     -d mongo:6 --auth
 ```
 
@@ -77,6 +82,10 @@ $ docker run --name mongodb \
     -p 27017:27017 \
     -v /docker/mongodb/data:/data/db \
     -v /docker/mongodb/dump:/var/dump \
+    -v /docker/mongodb/logs:/var/log/mongodb \
+    --log-driver=json-file \
+    --log-opt max-size=10m \
+    --log-opt max-file=5 \
     -e MONGO_INITDB_ROOT_USERNAME=root \
     -e MONGO_INITDB_ROOT_PASSWORD=mongo_root_pass \
     -d mongo:6

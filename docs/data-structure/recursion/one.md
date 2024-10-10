@@ -141,7 +141,7 @@ if (number <= 1) {
 
 然后打开控制台，执行代码会出发断电，然后在浏览器的右侧这个部分你就能看到调用顺序了：
 
-![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1b767bb51b1e432abb7eb876d17a231b~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/recur1.png)
 
 图中调用堆栈的部分就是每次调用的记录，一共 5 次，可以点击切换查看每次调用时函数内部的参数值。
 
@@ -149,7 +149,7 @@ if (number <= 1) {
 
 然后调用 **factorial(3)**，看控制台打印情况：
 
-![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9b7223dae8a94503b98d869659d0cde8~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/recur2.png)
 
 这里能直观的看到调用了几次，图中蓝色部分可点击，点击后会看到具体的方法和调用位置，对于调试代码非常方便。
 
@@ -168,7 +168,7 @@ test();
 
 控制台报错如下：
 
-![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ee9ff80001d546859490454949e327b6~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/recur3.png)
 
 这个意思就是超出了最大调用次数，我们看它实际调用了多少次：
 
@@ -183,7 +183,3 @@ console.log(count); // 10989
 本篇介绍了递归的概念和如何使用递归，然后用递归实现了数的阶乘。最后我们还介绍了如何在浏览器更好的调试递归函数，相信你看完这篇对递归的理解更深了。
 
 下一篇，我们继续用递归，实现著名的斐波那契数列。
-
-本文来源公众号：**程序员成功**。这是学习 JavaScript 数据结构与算法的第 20 篇，本系列会连续更新一个月。
-
-欢迎关注公众号，点击“**加群**”一起加入我们的学习队伍～

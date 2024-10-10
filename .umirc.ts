@@ -35,7 +35,7 @@ export default defineConfig({
       path: '/data-structure',
     },
     {
-      title: '跨平台',
+      title: '跨端开发',
       path: '/crosspt',
     },
     {

@@ -18,7 +18,7 @@ order: 1
 
 生活中最常见的树的例子，就是公司的组织架构，如图：
 
-![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9647a9345cac4ede8674c2944740e3ba~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/tree_boss.png)
 
 总裁是最高位置，下面划分了多个副总的岗位，副总下又划分经理，层层划分，形成了树状结构。现在你明白数据结构中的“树”是什么了吧？
 
@@ -26,7 +26,7 @@ order: 1
 
 树的每个元素被称为节点，一个树结构包含了一系列父子关系的节点。最顶层的那个节点被称为**根节点**，其他节点全部是它的子节点。
 
-![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1e9fd5cf20c14cf3a2740b99fd761f56~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/tree_ceng.png)
 
 如图，节点分为**内部节点**和**外部节点**。只要有子节点的就是内部节点，最外层的没有子节点的节点，就是外部节点，也叫叶节点。
 
@@ -174,7 +174,7 @@ bin_tree.insert(36);
 
 最终的打印结果如下：
 
-![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4bdeab1418c94435ad5d01555c08d53c~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/tree_log.png)
 
 看打印结果，符合我们上面二叉搜索树的概念。
 

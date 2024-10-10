@@ -2,7 +2,7 @@
 
 列举数组的算法题。
 
-## 1. 两数求和问题
+## 1. 两数求和
 
 真题描述：给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。
 
@@ -30,7 +30,7 @@ const gethe = (nums, target) => {
 
 > 小提示：几乎所有的求和问题，都可以转化为求差问题解决。
 
-## 2. 合并两个有序数组
+## 2. 合并有序数组
 
 真题描述：给定两个有序整数数组 nums1 和 nums2，请将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
 
@@ -81,7 +81,7 @@ const merge = function (nums1, nums2) {
 
 代码中的比较逻辑是，判断指针处哪个数组对应的值大，然后该指针向前移动，并将大的值添加到最后面，这样从后到前遍历一次，就会合并成一个有序的数组。
 
-## 3. 三数求和问题
+## 3. 三数求和
 
 真题描述：给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
 
@@ -121,3 +121,99 @@ const threeSum = (nums) => {
 ```
 
 代码中，将两个指针分别指向数组的前后位置，依次向中间移动，这种方式叫做“对撞指针”，可以避免多余的遍历。
+
+## 4. 二分查找
+
+给定一个 `元素升序的`、`无重复数字` 的整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标（下标从 0 开始），否则返回 -1。
+
+```js
+function search(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) {
+      return mid; // 目标值找到了，返回它的索引
+    } else if (nums[mid] < target) {
+      left = mid + 1; // 在右半边查找
+    } else {
+      right = mid - 1; // 在左半边查找
+    }
+  }
+
+  return -1; // 没有找到目标值
+}
+```
+
+下面是我自己写的递归方案：
+
+```js
+// write code here
+function search(nums, target) {
+  const subfun = (arrs) => {
+    if (arrs.length == 1) {
+      return nums.indexOf(arrs[0]);
+    }
+    let cent = Math.floor(arrs.length / 2);
+    if (arrs[cent] == target) {
+      return nums.indexOf(target);
+    }
+    if (arrs[cent] > target) {
+      arrs = arrs.slice(0, cent);
+    } else {
+      arrs = arrs.slice(cent);
+    }
+    return subfun(arrs);
+  };
+  return subfun(nums);
+}
+```
+
+## 5. 写一个并发的任务队列
+
+1. 构造函数接收一个表示最大并发数的参数
+2. 有一个 addTask 方法,用于添加任务(函数)到队列
+3. 有一个 run 方法,开始执行任务队列
+4. 任务执行时遵循先进先出(FIFO)原则
+5. 当有任务执行完毕时,如果还有未执行的任务,应立即开始执行新的任务
+6. 所有任务执行完毕后,调用传入的回调函数
+
+```js
+class TaskQueue {
+  constructor(concurrency: number) {
+    this.concurrency = concurrency; // 最大并发数
+    // 实现构造函数
+  }
+
+  concurrency = 1;
+  queues: any[] = []; // 任务队列
+
+  addTask(task: any) {
+    // 实现添加任务的方法
+    this.queues.push(task);
+  }
+
+  run(callback: () => void) {
+    if (this.queues.length == 0) {
+      return callback();
+    }
+    // 实现运行任务队列的方法
+    let multi_queues = [];
+    for (let i = 0; i < this.concurrency; i++) {
+      let q = this.queues.pop();
+      if (q) {
+        multi_queues.push(q);
+      }
+    }
+    Promise.all(multi_queues)
+      .then(() => {
+        this.run(callback);
+      })
+      .catch(() => {
+        // 没调用 reject 这行可能不会触发
+        this.queues.concat(multi_queues); // 失败后重新加入队列，下次执行
+      });
+  }
+}
+```

@@ -47,7 +47,7 @@ function fibonacci(n) {
 
 试一下使用效果，结果如下：
 
-![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d5ea81af9bd3423fb75f6d16728fa29f~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/recur4.png)
 
 第 n 位（n 从零开始）表示的值符合预期，说明该函数可用。
 
@@ -80,11 +80,11 @@ function fibonacci(n) {
 
 函数简单吧，看测试结果：
 
-![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29bdae42fd634404845d85c000c443ec~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/recur5.png)
 
 依然满足条件，说明该函数可用。我们用图来看一下这个函数的递归流程：
 
-![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0509a59d1ccc4097bed3267ac5ae274f~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/recur6.png)
 
 ## 记忆化斐波那契数
 
@@ -113,7 +113,7 @@ function fibonacciMemoization(n) {
 
 我们测试下这个函数：
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd1244419e6b4e1395d67accc4cb39b5~tplv-k3u1fbpfcp-watermark.image?)
+![](../images/recur7.png)
 
 结果也是没问题的，但要比纯递归性能好了许多。
 
@@ -121,8 +121,4 @@ function fibonacciMemoization(n) {
 
 本篇介绍了非常著名的斐波那契数列，然后我们用循环和递归实现了这个数列。相信看到这里，你对递归和斐波那契数列有一个更明了的认识了。
 
-下一篇，我们就要进入复杂数据结构 —— **树** 的学习，加油吧！
-
-本文来源公众号：[**程序员成功**](https://www.ruims.top/static/wxpub.png)。这是学习 JavaScript 数据结构与算法的第 21 篇，本系列会连续更新一个月。
-
-欢迎关注公众号，点击“**加群**”一起加入我们的学习队伍～
+下一篇，我们看几道递归的经典题目，加油吧！

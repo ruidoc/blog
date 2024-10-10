@@ -3,7 +3,7 @@ group:
   title: 数组篇
   path: /array
   order: 1
-order: 1
+order: 2
 ---
 
 # 基本操作
