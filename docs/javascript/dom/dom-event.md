@@ -55,19 +55,19 @@ e.preventDefault();
 
 **4. stopPropagation**
 
-终止事件继续冒泡或捕获
+终止事件继续冒泡或捕获。
 
 ```javascript
 e.stopPropagation();
 ```
 
-这个事件最常用，阻止触发父元素的事件
+这个事件最常用，阻止触发父元素的事件。
 
 ### 事件对象，是可以手动创建的
 
 除了触发元素的某个具体事件来产生事件对象，也可以手动创建。
 
-方法： Event() 构造函数
+方法： `Event()` 构造函数
 
 ```javascript
 var event = new Event(typeArg, eventInit);
